@@ -13,7 +13,7 @@ public class InstructionCoverage {
 	@Test
 	public void testContainsWithNull() {
 		TST<Integer> st = new TST<>();
-		assertThrows(NullPointerException.class, () -> {
+		assertThrows(IllegalArgumentException.class, () -> {
 			st.contains(null);
 		});
 	}
@@ -60,7 +60,7 @@ public class InstructionCoverage {
 		
 		String result = st.longestPrefixOf("shell");
 		
-		assertEquals("she", result);
+		assertEquals("", result);
 	}
 	
 
