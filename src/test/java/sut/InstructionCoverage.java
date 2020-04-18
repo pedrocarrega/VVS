@@ -1,7 +1,6 @@
 package sut;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,7 +25,7 @@ public class InstructionCoverage {
 		
 		boolean result = st.contains("she");
 		
-		assertEquals(true, result);
+		assertTrue(result);
 	}
 	
 	@Test
