@@ -1,6 +1,5 @@
 package sut;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
@@ -111,8 +110,8 @@ public class InstructionCoverage {
 	}
 	
 	@Test
-	public void testLongestPrefixOfPart1() {
-		TST<Integer> st = new TST<>();
+	public void testLongestPrefixOfPart1() throws FileNotFoundException {
+		TST<Integer> st = populateTST();
 		
 		String result = st.longestPrefixOf("c");
 		
@@ -120,12 +119,12 @@ public class InstructionCoverage {
 	}
 	
 	@Test
-	public void testLongestPrefixOfPart2() {
-		TST<Integer> st = new TST<>();
+	public void testLongestPrefixOfPart2() throws FileNotFoundException {
+		TST<Integer> st = populateTST();
 		
 		String result = st.longestPrefixOf("shell");
 		
-		assertEquals("", result);
+		assertEquals("she", result);
 	}
 	
 	@Test
@@ -147,8 +146,8 @@ public class InstructionCoverage {
 	}	
 	
 	@Test
-	public void testKeysWithPrefixWithEmptyTST() {
-		TST<Integer> st = new TST<>();
+	public void testKeysWithPrefixWithEmptyTST() throws FileNotFoundException {
+		TST<Integer> st = populateTST();
 		
 		Iterable<String> result = st.keysWithPrefix("string");
 		Queue<String> expected = new LinkedList<>();
@@ -156,8 +155,8 @@ public class InstructionCoverage {
 	}	
 	
 	@Test
-	public void testKeysWithPrefixWithExistingKeyPrefix() {
-		TST<Integer> st = new TST<>();
+	public void testKeysWithPrefixWithExistingKeyPrefix() throws FileNotFoundException {
+		TST<Integer> st = populateTST();
 		st.put("string", 0);
 		
 		Iterable<String> result = st.keysWithPrefix("string");
