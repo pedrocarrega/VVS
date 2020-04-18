@@ -1,15 +1,27 @@
 package sut;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
 public class InstructionCoverage {
+	
+	@Test
+	public void testSize() {
+		TST<Integer> st = new TST<>();
+		
+		int result = st.size();
+		
+		assertEquals(0, result);
+	}
 	
 	@Test
 	public void testContainsWithNull() {
@@ -27,6 +39,59 @@ public class InstructionCoverage {
 		boolean result = st.contains("she");
 		
 		assertEquals(true, result);
+	}
+	
+	@Test
+	public void testGetWithNullKey() {
+		TST<Integer> st = new TST<>();
+		assertThrows(IllegalArgumentException.class, () -> {
+			st.get(null);
+		});
+	}
+	
+	@Test
+	public void testGetWithEmptyKey() {
+		TST<Integer> st = new TST<>();
+		assertThrows(IllegalArgumentException.class, () -> {
+			st.get("");
+		});
+	}
+	
+	
+	@Test
+	public void testGetWithEmptyTST() {
+		TST<Integer> st = new TST<>();
+		
+		Integer result = st.get("string");
+		assertEquals(null, result);
+	}
+	
+	@Test
+	public void testGetWithValidKey() {
+		TST<Integer> st = new TST<>();
+		st.put("string", 0);
+		
+		int result = st.get("string");
+		int expected = 0;
+		assertEquals(expected, result);
+	}
+	
+	@Test
+	public void testPutWithNullKey() {
+		TST<Integer> st = new TST<>();
+		
+		assertThrows(IllegalArgumentException.class, () -> {
+			st.put(null, null);
+		});
+	}
+	
+	@Test
+	public void testPutWithExistingKey() {
+		TST<Integer> st = new TST<>();
+		
+		st.put("string", 0);
+		boolean verifier = st.contains("string") ;
+		assertTrue(verifier);
 	}
 	
 	@Test
@@ -64,7 +129,52 @@ public class InstructionCoverage {
 		assertEquals("she", result);
 	}
 	
-
+	@Test
+	public void testKeys() {
+		TST<Integer> st = new TST<>();
+		
+		Iterable<String> result = st.keys();
+		Queue<String> expected = new LinkedList<>();
+		assertEquals(expected, result);
+	}	
+	
+	@Test
+	public void testKeysWithPrefixWithNullString() {
+		TST<Integer> st = new TST<>();
+		
+		assertThrows(IllegalArgumentException.class, () -> {
+			st.keysWithPrefix(null);
+		});
+	}	
+	
+	@Test
+	public void testKeysWithPrefixWithEmptyTST() {
+		TST<Integer> st = new TST<>();
+		
+		Iterable<String> result = st.keysWithPrefix("string");
+		Queue<String> expected = new LinkedList<>();
+		assertEquals(expected, result);
+	}	
+	
+	@Test
+	public void testKeysWithPrefixWithExistingKeyPrefix() {
+		TST<Integer> st = new TST<>();
+		st.put("string", 0);
+		
+		Iterable<String> result = st.keysWithPrefix("string");
+		Queue<String> expected = new LinkedList<>();
+		expected.add("string");
+		assertEquals(expected, result);
+	}	
+	
+	@Test
+	public void testKeysThatMatchWithNullPattern() {
+		TST<Integer> st = new TST<>();
+		
+		Iterable<String> result = st.keysThatMatch(null);
+		Queue<String> expected = new LinkedList<>();
+		assertEquals(expected, result);
+	}	
 	
 	private TST<Integer> populateTST() throws FileNotFoundException {
 		
@@ -77,7 +187,7 @@ public class InstructionCoverage {
 			for(String key : keys)
 				st.put(key, ++i);
 		}
-		
+		sc.close();
 		return st;
 	}
 
