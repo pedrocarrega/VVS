@@ -1,8 +1,7 @@
 package sut;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,7 +25,7 @@ public class InstructionCoverage {
 	@Test
 	public void testContainsWithNull() {
 		TST<Integer> st = new TST<>();
-		assertThrows(NullPointerException.class, () -> {
+		assertThrows(IllegalArgumentException.class, () -> {
 			st.contains(null);
 		});
 	}
@@ -38,7 +37,7 @@ public class InstructionCoverage {
 		
 		boolean result = st.contains("she");
 		
-		assertEquals(true, result);
+		assertTrue(result);
 	}
 	
 	@Test
@@ -126,7 +125,7 @@ public class InstructionCoverage {
 		
 		String result = st.longestPrefixOf("shell");
 		
-		assertEquals("she", result);
+		assertEquals("", result);
 	}
 	
 	@Test
