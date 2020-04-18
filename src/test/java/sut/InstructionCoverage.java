@@ -51,6 +51,7 @@ public class InstructionCoverage {
 	@Test
 	public void testGetWithEmptyKey() {
 		TST<Integer> st = new TST<>();
+		st.put("string", 0);
 		assertThrows(IllegalArgumentException.class, () -> {
 			st.get("");
 		});
