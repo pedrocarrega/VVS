@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
-public class InstructionCoverage {
+public class InstructionCoverageTests {
 	
 	@Test
 	public void testSize() {
