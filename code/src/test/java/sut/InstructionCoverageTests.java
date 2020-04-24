@@ -8,7 +8,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
+import sut.TST;
 
 public class InstructionCoverageTests {
 	
@@ -157,7 +159,8 @@ public class InstructionCoverageTests {
 	
 	@Test
 	public void testKeysWithPrefixWithExistingKeyPrefix() throws FileNotFoundException {
-		TST<Integer> st = populateTST();
+		TST<Integer> st = new TST<>();
+		st.put("string", 0);
 		
 		Iterable<String> result = st.keysWithPrefix("string");
 		Queue<String> expected = new LinkedList<>();

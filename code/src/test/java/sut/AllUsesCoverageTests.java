@@ -2,7 +2,9 @@ package sut;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
+import sut.TST;
 
 public class AllUsesCoverageTests {
 
