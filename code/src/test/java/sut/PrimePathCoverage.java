@@ -95,7 +95,7 @@ public class PrimePathCoverage {
 	}
 
 	@Test
-	public void testLongestPrefixOfValid5() { //[1,3,5,6,7,10,12,6,7,9,6,13]
+	public void testLongestPrefixOfValid5() {
 		//[1,3,5,6,7,10,12]
 		//[6,7,10,12,6]
 		//[7,10,12,6,7]
