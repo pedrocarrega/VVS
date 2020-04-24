@@ -10,8 +10,6 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-import sut.TST;
-
 public class InstructionCoverageTests {
 	
 	@Test

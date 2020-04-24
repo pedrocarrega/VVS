@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Test;
 
-import sut.TST;
-
 public class AllUsesCoverageTests {
 
 	@Test

@@ -1,11 +1,8 @@
 package sut;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Test;
-
-import sut.TST;
 
 public class EdgeCoverageTests {
 	
