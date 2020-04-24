@@ -54,6 +54,20 @@ public class PrimePathCoverage {
 		assertEquals("", result);
 	}
 
+	@Test
+	public void testLongestPrefixOfValid3() {
+		//[1,3,5,6,7,9]
+		//[7,9,6,7]
+		//[7,9,6,13]
+		//[6,7,9,6]
+		//[9,6,7,9]
+		TST<Integer> st = new TST<>();
+		st.put("d", 0);
+		st.put("a", 0);
+		String result = st.longestPrefixOf("b");
+		
+		assertEquals("", result);
+	}
 
 
 }
