@@ -33,7 +33,7 @@ public class Run {
         
         System.out.println("keysThatMatch(\".he.l.\"):");
         for (String s : st.keysThatMatch(".he.l."))
-        	System.out.println(s);
+        	System.out.println(s);		
 		
 		sc.close();
 	}
