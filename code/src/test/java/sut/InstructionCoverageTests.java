@@ -8,7 +8,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
+import sut.TST;
 
 public class InstructionCoverageTests {
 	
