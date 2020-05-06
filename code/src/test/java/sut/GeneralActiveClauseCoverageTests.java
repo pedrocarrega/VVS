@@ -5,18 +5,18 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Test;
 
 /*
- * It was choosen GACC instead of CC because CC only evaluates clauses independently
+ * It was chosen GACC instead of CC because CC only evaluates clauses independently
  * 		so in p3 we can have a case where the 2nd clause does not matter since the 
  * 		1st clause is false.
- * PC was also not choosen because of taking only into consideration the predicate it self,
+ * PC was also not chosen because of taking only into consideration the predicate it self,
  * 		so again in p3 it does not cover some important cases that GACC covers. Since it only
  * 		requires that p3 is true and another that p3 is false.
- * The GACC was choosen instead of CACC or RACC because in the while predicate
+ * The GACC was chosen instead of CACC or RACC because in the while predicate
  * 		the value will have no effect in the sense that when the clause is
  * 		deterministic, and its value is true then the condition will be true,
  * 		when the value is false then the predicate will be false also, so this
  * 		would not have any effect on the while predicate so that was why the GACC
- * 		was choosen. The other predicates are only composed by one clause so the
+ * 		was chosen. The other predicates are only composed by one clause so the
  * 		GACC would be the correct for them too
  * 
  * Test Requirements:
