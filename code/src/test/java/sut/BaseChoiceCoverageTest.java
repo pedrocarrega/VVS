@@ -66,7 +66,7 @@ public class BaseChoiceCoverageTest {
 	}
 	
 	@Test
-	void testPutOnEmptyTrie() {
+	public void testPutOnEmptyTrie() {
 		TST<Integer> st = new TST<>();
 		int expected = 0;
 		int size1 = st.size();
