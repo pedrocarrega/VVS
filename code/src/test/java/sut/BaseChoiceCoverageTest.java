@@ -26,31 +26,6 @@ public class BaseChoiceCoverageTest {
 	 */
 	
 	/*
-	 * -Covers TR1
-	 * Infeasible Test Requirement
-	 */
-	@Test
-	public void testPutWithEmptyTrie() {
-		TST<Integer> st = new TST<>();
-		String input = "a";
-		
-		//This covers the property 1- Trie is empty
-		boolean is_empty = st.size() == 0;
-		assertTrue(is_empty);
-		
-		//This covers the property 2- Trie already includes the new key
-		boolean contains_key = st.contains(input);
-		assertTrue(contains_key);
-		
-		//This covers the property 3- Trie already includes some new key prefix
-		String prefix_found = st.longestPrefixOf(input);
-		boolean contains_prefix = !prefix_found.equals("");
-		assertTrue(contains_prefix);	
-				
-		st.put(input,0);
-	}
-	
-	/*
 	 * -Covers TR2
 	 */
 	@Test
