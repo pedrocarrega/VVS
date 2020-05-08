@@ -176,6 +176,27 @@ public class InstructionCoverageTests {
 		Queue<String> expected = new LinkedList<>();
 		assertEquals(expected, result);
 	}	
+	@Test
+	public void TestUnorderedInsertionEqualTries() {
+		TST<Integer> st = new TST<>();
+		TST<Integer> st2 = new TST<>();
+		
+		st.put("a", 0);
+		st.put("aa", 1);
+		st.put("aab", 2);
+		st.put("aabb", 3);
+		
+		st2.put("aabb", 3);
+		st2.put("aab", 2);
+		st2.put("a", 0);
+		st2.put("aa", 1);
+		
+		boolean expected = st.equals(st2);
+		System.out.println(st2.keys() + " Árvore 2");
+		System.out.println(st.keys()  + " Árvore 1");
+		
+		assertEquals(true, expected);	
+	}
 	
 	private TST<Integer> populateTST() throws FileNotFoundException {
 		
@@ -191,5 +212,9 @@ public class InstructionCoverageTests {
 		sc.close();
 		return st;
 	}
+	
+	
+	
+	
 
 }

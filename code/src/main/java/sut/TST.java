@@ -237,35 +237,43 @@ public class TST<T> {
 
 	public boolean equals(Object o) {
 		int compKeys = 0;
-		
+
 		if (o == this)
-	        return true;
-	    if (!(o instanceof TST))
-	        return false;
+			return true;
+		if (!(o instanceof TST))
+			return false;
 		HashMap<String,Integer> pairs = new HashMap<String, Integer>();
 		HashMap<String,Integer> compPairs = new HashMap<String, Integer>();
-		
+
+
 		TST other = (TST) o;
 		for(String key: this.keys()) {
 			pairs.put(key, (Integer) get(key));
 		}
-		for(String key : (ArrayList<String>) other.keys()) {
+		for(String key : (LinkedList<String>) other.keys()) {
 			compPairs.put(key, (Integer) get(key));		
 		}
-		
-		if(pairs.size()!=compPairs.size())
-			return false;
+		System.out.println(pairs.size() + " Aquiii");
+		System.out.println(compPairs.size() + " Aquiii");
+
 		for(Entry<String,Integer> entry :pairs.entrySet()) {
-			
 			for(Entry <String, Integer> ent :compPairs.entrySet()) {
-				if(entry.getKey() == ent.getKey() && entry.getValue() == ent.getValue()) {
+				System.out.println((entry.getKey()));
+				System.out.println((ent.getKey()));
+				if(entry.getKey().equals(ent.getKey()) && entry.getValue() == ent.getValue()){
 					compKeys ++;
+					System.out.println(compKeys);
 				}
 			}
 		}
+
+		if(pairs.size() != (compPairs.size())) {
+			return false;
+		}
+
 		if(compKeys == pairs.size())
-		return true;
-		
+			return true;
+
 		return false;
 
 	}
@@ -298,5 +306,6 @@ public class TST<T> {
 		}
 
 	}
+
 
 }
