@@ -291,24 +291,19 @@ public class TST<T> {
 				node.val = null;
 				n--;
 			}
+			
 			else{
+				
 				if(node.left != null) 
 					delete(node.left, key, index);
 
 				if(node.mid != null) 
 					delete(node.mid, key, index);
 
-
-
 				if(node.right != null) 
 					delete(node.right, key, index);
 
-
 			}
-
-
 		}
-
-
 	}
 }
