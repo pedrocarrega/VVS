@@ -253,16 +253,11 @@ public class TST<T> {
 		for(String key : (LinkedList<String>) other.keys()) {
 			compPairs.put(key, (Integer) get(key));		
 		}
-		System.out.println(pairs.size() + " Aquiii");
-		System.out.println(compPairs.size() + " Aquiii");
-
 		for(Entry<String,Integer> entry :pairs.entrySet()) {
 			for(Entry <String, Integer> ent :compPairs.entrySet()) {
-				System.out.println((entry.getKey()));
-				System.out.println((ent.getKey()));
+
 				if(entry.getKey().equals(ent.getKey()) && entry.getValue() == ent.getValue()){
 					compKeys ++;
-					System.out.println(compKeys);
 				}
 			}
 		}
@@ -292,22 +287,28 @@ public class TST<T> {
 	private void delete(Node<T> node, String key, int index) {
 		if(node.c == key.charAt(index++)) {
 
-			if(index == key.length())
+			if(index == key.length()) {
 				node.val = null;
-
+				n--;
+			}
 			else{
-				if(node.left != null)
+				if(node.left != null) 
 					delete(node.left, key, index);
 
-				if(node.mid != null)
+				if(node.mid != null) 
 					delete(node.mid, key, index);
 
-				if(node.right != null)
+
+
+				if(node.right != null) 
 					delete(node.right, key, index);
+
+
 			}
+
+
 		}
 
+
 	}
-
-
 }
