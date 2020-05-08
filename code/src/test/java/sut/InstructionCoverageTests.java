@@ -12,6 +12,7 @@ import org.junit.Test;
 
 public class InstructionCoverageTests {
 	
+
 	@Test
 	public void testSize() {
 		TST<Integer> st = new TST<>();
@@ -47,6 +48,7 @@ public class InstructionCoverageTests {
 		});
 	}
 	
+	//
 	@Test
 	public void testGetWithEmptyKey() {
 		TST<Integer> st = new TST<>();
