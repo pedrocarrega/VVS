@@ -198,6 +198,46 @@ public class InstructionCoverageTests {
 		assertEquals(true, expected);	
 	}
 	
+	@Test
+	public void TestRemovingAllKeys() {
+		TST<Integer> st = new TST<>();
+		st.put("a", 0);
+		st.put("aa", 1);
+		st.put("aab", 2);
+		st.put("aabb", 3);
+		
+		st.delete("a");
+		st.delete("aa");
+		st.delete("aab");
+		st.delete("aabb");
+		
+		int expected = 0;
+		int result = st.size();
+		assertEquals(expected, result);
+		
+		
+	}
+	
+	@Test
+	public void TestPutRemoveMantainsValue() {
+		TST<Integer> st = new TST<>();
+		st.put("a", 0);
+		st.put("aa", 1);
+		st.put("aab", 2);
+		st.put("aabb", 3);
+		st.put("baa", 5);
+		st.delete("baa");
+		
+		TST<Integer> st2 = new TST<>();
+		st2.put("a", 0);
+		st2.put("aa", 1);
+		st2.put("aab", 2);
+		st2.put("aabb", 3);
+		
+		boolean expected = st.equals(st2);
+		assertEquals(true, expected);
+	}
+	
 	private TST<Integer> populateTST() throws FileNotFoundException {
 		
 		Scanner sc = new Scanner(new File("data/someWords.txt"));
