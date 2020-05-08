@@ -37,7 +37,6 @@ public class TST<T> {
 
 	private Node<T> root;   // root of TST
 	private int n;          // size
-	private final int final_tree_value = 0;
 
 
 	private static class Node<T> {
@@ -235,6 +234,7 @@ public class TST<T> {
 			collect(x.right, prefix, i, pattern, queue);
 	}
 
+	@SuppressWarnings("unchecked")
 	public boolean equals(Object o) {
 		int compKeys = 0;
 
@@ -246,7 +246,7 @@ public class TST<T> {
 		HashMap<String,Integer> compPairs = new HashMap<String, Integer>();
 
 
-		TST other = (TST) o;
+		TST<T> other = (TST<T>) o;
 		for(String key: this.keys()) {
 			pairs.put(key, (Integer) get(key));
 		}
