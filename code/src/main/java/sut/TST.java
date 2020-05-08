@@ -302,11 +302,7 @@ public class TST<T> {
 
 				if(node.right != null) 
 					delete(node.right, key, index);
-
-
 			}
-
-
 		}
 
 
