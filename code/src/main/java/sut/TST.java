@@ -297,14 +297,13 @@ public class TST<T> {
 
 			else{
 				if(node.left != null)
-			
-				delete(node.left, key, index);
+					delete(node.left, key, index);
 
-			if(node.mid != null)
-				delete(node.mid, key, index);
+				if(node.mid != null)
+					delete(node.mid, key, index);
 
-			if(node.right != null)
-				delete(node.right, key, index);
+				if(node.right != null)
+					delete(node.right, key, index);
 			}
 		}
 
