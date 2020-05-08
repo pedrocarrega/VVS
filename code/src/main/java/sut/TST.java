@@ -285,43 +285,23 @@ public class TST<T> {
 	}
 
 	private void delete(Node<T> node, String key, int index) {
-		if(node.c == key.charAt(index++)) {
-
+		if(node.c == key.charAt(index)) {
+			index++;
 			if(index == key.length()) {
 				node.val = null;
 				n--;
-			}
-<<<<<<< HEAD
-			
-			else{
-				
-				if(node.left != null) 
-					delete(node.left, key, index);
-
-				if(node.mid != null) 
-					delete(node.mid, key, index);
-
-				if(node.right != null) 
-					delete(node.right, key, index);
-
-			}
-		}
-=======
-			else{
-				if(node.left != null) 
-					delete(node.left, key, index);
-
-				if(node.mid != null) 
-					delete(node.mid, key, index);
-
-
-
-				if(node.right != null) 
-					delete(node.right, key, index);
+				return;
 			}
 		}
 
+		if(node.left != null) 
+			delete(node.left, key, index);
 
->>>>>>> branch 'master' of https://github.com/pedrocarrega/VVS_ASSIGNMENT1.git
+		if(node.mid != null) 
+			delete(node.mid, key, index);
+
+		if(node.right != null) 
+			delete(node.right, key, index);
+
 	}
 }
