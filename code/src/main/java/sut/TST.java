@@ -295,7 +295,9 @@ public class TST<T> {
 			if(index == key.length())
 				node.val = null;
 
-			if(node.left != null)
+			else{
+				if(node.left != null)
+			
 				delete(node.left, key, index);
 
 			if(node.mid != null)
@@ -303,6 +305,7 @@ public class TST<T> {
 
 			if(node.right != null)
 				delete(node.right, key, index);
+			}
 		}
 
 	}
