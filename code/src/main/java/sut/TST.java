@@ -38,7 +38,7 @@ public class TST<T> {
 	private Node<T> root;   // root of TST
 	private int n;          // size
 	private final int final_tree_value = 0;
-	
+
 
 	private static class Node<T> {
 		private char c;                    // character
@@ -234,7 +234,7 @@ public class TST<T> {
 		if (c == '.' || c > x.c) 
 			collect(x.right, prefix, i, pattern, queue);
 	}
-	
+
 	public boolean equals(Object o) {
 		int compKeys = 0;
 		
@@ -277,12 +277,26 @@ public class TST<T> {
 		if(!contains(key)) {
 			throw new IllegalArgumentException("No such key was found in this TST");
 		}
-		else {
-			Node selected = (Node) get(key);
-			selected.val = null;
-			//test 2
-			n = n-1;
+		delete(root, key, 0);
+
+	}
+
+	private void delete(Node<T> node, String key, int index) {
+		if(node.c == key.charAt(index++)) {
+
+			if(index == key.length())
+				node.val = null;
+
+			if(node.left != null)
+				delete(node.left, key, index);
+
+			if(node.mid != null)
+				delete(node.mid, key, index);
+
+			if(node.right != null)
+				delete(node.right, key, index);
 		}
+
 	}
 
 }
