@@ -6,12 +6,12 @@ import com.pholser.junit.quickcheck.random.SourceOfRandomness;
 
 import sut.TST;
 
-public class TrieRandomGenerator extends Generator<TST<Integer>>{
+public class TrieGenerator extends Generator<TST<Integer>>{
 
 	private final int maxNodeSize = 100;
 	private final int maxStringSize = 15;
 	
-	protected TrieRandomGenerator(Class<TST<Integer>> type) {
+	protected TrieGenerator(Class<TST<Integer>> type) {
 		super(type);
 	}
 
