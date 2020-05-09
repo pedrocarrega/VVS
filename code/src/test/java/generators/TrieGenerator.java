@@ -24,7 +24,7 @@ public class TrieGenerator extends Generator<TST<Integer>>{
 		while(size-- > 0) {
 			//generate string
 			StringBuilder key = new StringBuilder();
-			int keySize = 1 + random.nextInt(maxStringSize-1);
+			int keySize = 2 + random.nextInt(maxStringSize-1);
 			while(keySize-- > 0)
 				key.append(random.nextChar('a', 'z'));
 			

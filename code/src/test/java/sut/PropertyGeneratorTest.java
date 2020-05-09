@@ -82,6 +82,7 @@ public class PropertyGeneratorTest {
 
 		Iterable<String> keys = tst.keys();
 		List<String> list = new ArrayList<String>();
+		boolean result = true;
 
 		Random r = new Random();
 		for(String s: keys) {
@@ -90,24 +91,36 @@ public class PropertyGeneratorTest {
 
 		//escolher 1 random key
 		String convert = "";
+
 		do {
 			convert = list.get(r.nextInt(list.size()));
-		}while(convert.length() < 4);
-		
-		int count = 0;
-		int countStrict = 0;
-		
-		Iterable<String> iterator = tst.keysWithPrefix(convert.substring(0, convert.length()/2));
-		
-		for(String result : iterator)
-			count++;
-		
-		iterator = tst.keysWithPrefix(convert.substring(0, convert.length()/4));
-		
-		for(String result : iterator)
-			countStrict++;
+		}while(convert.length() < 2);
 
-		assertTrue(count <= countStrict);
+		String test = convert;
+		do {
+			int count = 0;
+			int countStrict = 0;
+
+			Iterable<String> iterator = tst.keysWithPrefix(test);
+
+			for(String key : iterator)
+				count++;
+
+			test = test.substring(0, test.length()-1);
+
+			iterator = tst.keysWithPrefix(test);
+
+			for(String key : iterator)
+				countStrict++;
+
+			if(count > countStrict) {
+				result = false;
+				break;
+			}
+
+		}while(test.length() > 1);
+
+		assertTrue(result);
 	}
 
 
