@@ -1,7 +1,6 @@
 package sut;
 
 import java.util.*;
-import java.util.Map.Entry;
 
 /******************************************************************************
  *  Symbol table with string keys using a ternary search trie (TST).
@@ -243,33 +242,21 @@ public class TST<T> {
 		if (!(o instanceof TST))
 			return false;
 
-		HashMap<String,Integer> pairs = new HashMap<>();
-		HashMap<String,Integer> compPairs = new HashMap<>();
-
-
 		TST<T> other = (TST<T>) o;
 
 		if(this.size() != other.size())
 			return false;
 
-		for(String key: this.keys()) {
-			pairs.put(key, (Integer) get(key));
-		}
+		for(String key : this.keys()) {
+			for(String s : other.keys()) {
 
-		for(String key : (LinkedList<String>) other.keys()) {
-			compPairs.put(key, (Integer) get(key));		
-		}
-
-		for(Entry<String,Integer> entry : pairs.entrySet()) {
-			for(Entry<String, Integer> ent : compPairs.entrySet()) {
-
-				if(entry.getKey().equals(ent.getKey()) && entry.getValue() == ent.getValue()){
+				if(this.get(key).equals(other.get(s)) && key.equals(s)){
 					compKeys++;
 				}
 			}
 		}
 
-		if(pairs.size() != (compPairs.size()) || compKeys != pairs.size()) 
+		if(compKeys != this.size()) 
 			return false;
 
 		return true;

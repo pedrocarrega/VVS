@@ -175,9 +175,49 @@ public class InstructionCoverageTests {
 		Iterable<String> result = st.keysThatMatch(null);
 		Queue<String> expected = new LinkedList<>();
 		assertEquals(expected, result);
-	}	
+	}
+	
 	@Test
-	public void TestUnorderedInsertionEqualTries() {
+	public void testSameObjectEquals() throws FileNotFoundException {
+		
+		TST<Integer> tst = populateTST();
+		
+		assertTrue(tst.equals(tst));
+	}
+	
+	@Test
+	public void testDifferentClassEquals() throws FileNotFoundException {
+		
+		TST<Integer> tst = populateTST();
+		
+		assertFalse(tst.equals(""));
+	}
+	
+	@Test
+	public void testDifferentSizeEquals() throws FileNotFoundException {
+		
+		TST<Integer> tst = populateTST();
+		TST<Integer> tst2 = new TST<>();
+		
+		assertFalse(tst.equals(tst2));
+	}
+	
+	@Test
+	public void TestEquals() {
+		TST<Integer> st = new TST<>();
+		TST<Integer> st2 = new TST<>();
+		
+		st.put("a", 2);
+		st.put("aa", 1);
+		
+		st2.put("a", 0);
+		st2.put("aa", 1);
+		
+		assertFalse(st.equals(st2));	
+	}
+	
+	@Test
+	public void testEqualsTrue() {
 		TST<Integer> st = new TST<>();
 		TST<Integer> st2 = new TST<>();
 		
@@ -191,51 +231,23 @@ public class InstructionCoverageTests {
 		st2.put("a", 0);
 		st2.put("aa", 1);
 		
-		boolean expected = st.equals(st2);
-		System.out.println(st2.keys() + " Árvore 2");
-		System.out.println(st.keys()  + " Árvore 1");
-		
-		assertEquals(true, expected);	
+		assertTrue(st.equals(st2));	
 	}
 	
 	@Test
-	public void TestRemovingAllKeys() {
+	public void TestDelete() {
 		TST<Integer> st = new TST<>();
-		st.put("a", 0);
-		st.put("aa", 1);
-		st.put("aab", 2);
-		st.put("aabb", 3);
+		st.put("cc", 0);
+		st.put("a", 1);
+		st.put("d", 2);
 		
-		st.delete("a");
-		st.delete("aa");
-		st.delete("aab");
-		st.delete("aabb");
+		st.delete("cc");
 		
-		int expected = 0;
-		int result = st.size();
-		assertEquals(expected, result);
+		boolean result = st.contains("cc");
+		
+		assertFalse(result);
 		
 		
-	}
-	
-	@Test
-	public void TestPutRemoveMantainsValue() {
-		TST<Integer> st = new TST<>();
-		st.put("a", 0);
-		st.put("aa", 1);
-		st.put("aab", 2);
-		st.put("aabb", 3);
-		st.put("baa", 5);
-		st.delete("baa");
-		
-		TST<Integer> st2 = new TST<>();
-		st2.put("a", 0);
-		st2.put("aa", 1);
-		st2.put("aab", 2);
-		st2.put("aabb", 3);
-		
-		boolean expected = st.equals(st2);
-		assertEquals(true, expected);
 	}
 	
 	private TST<Integer> populateTST() throws FileNotFoundException {
@@ -252,9 +264,4 @@ public class InstructionCoverageTests {
 		sc.close();
 		return st;
 	}
-	
-	
-	
-	
-
 }
