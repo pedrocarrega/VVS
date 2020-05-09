@@ -288,20 +288,24 @@ public class TST<T> {
 	private void delete(Node<T> node, String key, int index) {
 		if(node.c == key.charAt(index)) {
 			index++;
-			if(index == key.length()) {
+			if(index == key.length() && node.val != null) {
 				node.val = null;
 				n--;
 				return;
 			}
 		}
 
-		if(node.left != null) 
-			delete(node.left, key, index);
+		if(index < key.length()) {
 
-		if(node.mid != null) 
-			delete(node.mid, key, index);
+			if(node.left != null) 
+				delete(node.left, key, index);
 
-		if(node.right != null) 
-			delete(node.right, key, index);
+			if(node.mid != null) 
+				delete(node.mid, key, index);
+
+			if(node.right != null) 
+				delete(node.right, key, index);
+
+		}
 	}
 }

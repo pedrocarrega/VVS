@@ -17,77 +17,75 @@ import generators.TrieGenerator;
 
 @RunWith(JUnitQuickcheck.class)
 public class PropertyGeneratorTest {
-	
+
 	private final int maxIntSize = 50;
 	private final int maxStringSize = 15;
 
 	@Property
 	public void testOrder(@From(TrieGenerator.class) TST<Integer> tst) {
-		
+
 		Random r = new Random();
 		TST<Integer> temp = new TST<>();
 		List<String> keys = new ArrayList<>();
 		Iterable<String> tempKeys = tst.keys();
-		
+
 		for(String key : tempKeys)
 			keys.add(key);
-		
+
 		while(!keys.isEmpty()) {
 			int index = r.nextInt(keys.size());
 			temp.put(keys.get(index), tst.get(keys.get(index)));
 			keys.remove(index);
 		}
-		
+
 		assertTrue(tst.equals(temp));
 	}
-	
+
+
 	@Property
 	public void testRemove(@From(TrieGenerator.class) TST<Integer> tst) {
-		
+
 		Iterable<String> keys = tst.keys();
-		int count = 0;
-		
-		for(String key : keys) {
+
+		for(String key : keys)
 			tst.delete(key);
-			count++;
-		}
-			
-		
+
 		assertEquals(0, tst.size());
 	}
-	
+
+
 	@Property
 	public void testInsertDelete(@From(TrieGenerator.class) TST<Integer> tst) {
-		
+
 		TST<Integer> temp = new TST<>();
 		Random r = new Random();
 		Iterable<String> keys = tst.keys();
-		
+
 		for(String key : keys)
 			temp.put(key, tst.get(key));
-		
+
 		String key = r.ints(97, 123)
-					  .limit(maxStringSize)
-					  .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-					  .toString();
-		
+				.limit(maxStringSize)
+				.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+				.toString();
+
 		temp.put(key, r.nextInt(maxIntSize));
 		temp.delete(key);
-		
+
 		assertTrue(tst.equals(temp));
 	}
-	
+
 	/*
 	@Property
 	public void testKeysWithPrefix(@From(TrieGenerator.class) TST<Integer> tst) {
-		
+
 		Iterable<String> keys = tst.keys();
-		
+
 		for(String key : keys)
 			tst.delete(key);
-		
+
 		assertEquals(0, tst.size());
 	}
-	*/
+	 */
 
 }
