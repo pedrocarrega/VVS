@@ -11,7 +11,7 @@ public class TrieGenerator extends Generator<TST<Integer>>{
 	private final int maxNodeSize = 100;
 	private final int maxStringSize = 15;
 	
-	protected TrieGenerator(Class<TST<Integer>> type) {
+	public TrieGenerator(Class<TST<Integer>> type) {
 		super(type);
 	}
 
@@ -28,7 +28,7 @@ public class TrieGenerator extends Generator<TST<Integer>>{
 			while(keySize-- > 0)
 				key.append(random.nextChar('a', 'z'));
 			
-			tst.put(key.toString(), 1 + random.nextInt(maxNodeSize-1));
+			tst.put(key.toString(), random.nextInt(maxNodeSize));
 		}
 		return tst;
 	}
