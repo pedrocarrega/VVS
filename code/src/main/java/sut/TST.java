@@ -242,24 +242,24 @@ public class TST<T> {
 			return true;
 		if (!(o instanceof TST))
 			return false;
-		
+
 		HashMap<String,Integer> pairs = new HashMap<>();
 		HashMap<String,Integer> compPairs = new HashMap<>();
 
 
 		TST<T> other = (TST<T>) o;
-		
+
 		if(this.size() != other.size())
 			return false;
-		
+
 		for(String key: this.keys()) {
 			pairs.put(key, (Integer) get(key));
 		}
-		
+
 		for(String key : (LinkedList<String>) other.keys()) {
 			compPairs.put(key, (Integer) get(key));		
 		}
-		
+
 		for(Entry<String,Integer> entry : pairs.entrySet()) {
 			for(Entry<String, Integer> ent : compPairs.entrySet()) {
 
@@ -280,10 +280,9 @@ public class TST<T> {
 	 * @param key
 	 */
 	public void delete(String key) {
-		if(!contains(key)) {
-			throw new IllegalArgumentException("No such key was found in this TST");
+		if(contains(key)) {
+			delete(root, key, 0);
 		}
-		delete(root, key, 0);
 	}
 
 	private void delete(Node<T> node, String key, int index) {
