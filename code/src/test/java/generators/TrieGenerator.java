@@ -9,7 +9,7 @@ import sut.TST;
 public class TrieGenerator extends Generator<TST<Integer>>{
 
 	private final int maxNodeSize = 100;
-	private final int maxStringSize = 15;
+	private final int maxStringSize = 25;
 	
 	public TrieGenerator(Class<TST<Integer>> type) {
 		super(type);

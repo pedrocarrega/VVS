@@ -75,41 +75,40 @@ public class PropertyGeneratorTest {
 		assertTrue(tst.equals(temp));
 	}
 
-	
+
+	@SuppressWarnings("unused")
 	@Property
 	public void testKeysWithPrefix(@From(TrieGenerator.class) TST<Integer> tst) {
 
 		Iterable<String> keys = tst.keys();
 		List<String> list = new ArrayList<String>();
-		
+
 		Random r = new Random();
 		for(String s: keys) {
 			list.add(s);
 		}
-		//Object randomValue = values[generator.nextInt(values.length)];
-		int ran = r.nextInt(list.size()-1);
-		//key random escolhida
-		String convert = list.get(ran);
+
+		//escolher 1 random key
+		String convert = "";
+		do {
+			convert = list.get(r.nextInt(list.size()));
+		}while(convert.length() < 4);
 		
-		tst.keysWithPrefix(convert);
-		//Remover alguns chars para testar output
-		String menor;
-		if(convert.length() > 2) {
-			menor = convert.substring(0, convert.length()-(convert.length()-1));
-		}
-		else {
-			menor = convert;
-		}
-		boolean expected = false;
-		List<String> big = (List<String>) tst.keysWithPrefix(convert);
-		List<String> small = (List<String>) tst.keysWithPrefix(menor);
-		System.out.println(big.size() + " ->big");
-		System.out.println(small.size() + " ->small");
-		if(big.size() <= small.size()) {
-			expected = true;
-		}
-		assertEquals(expected, true);
+		int count = 0;
+		int countStrict = 0;
+		
+		Iterable<String> iterator = tst.keysWithPrefix(convert.substring(0, convert.length()/2));
+		
+		for(String result : iterator)
+			count++;
+		
+		iterator = tst.keysWithPrefix(convert.substring(0, convert.length()/4));
+		
+		for(String result : iterator)
+			countStrict++;
+
+		assertTrue(count <= countStrict);
 	}
-	 
+
 
 }
